@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Radio Buttons -->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TV" />
+
+        <RadioButton
+            android:id="@+id/radioLaptop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laptop" />
+
+        <RadioButton
+            android:id="@+id/radioIphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="iPhone" />
+    </RadioGroup>
+
+    <!-- Image View -->
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitCenter" />
+
+</LinearLayout>
+
+JAVA CODE:
+
+package com.example.myapplication;
+
+
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class lp2 extends AppCompatActivity {
+
+    ImageView productImage;
+    RadioGroup radioGroup;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.lp2layout);
+
+        productImage = findViewById(R.id.productImage);
+        radioGroup = findViewById(R.id.radioGroup);
+
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+
+            if (checkedId == R.id.radioTv) {
+                productImage.setImageResource(R.drawable.img_1);
+            }
+            else if (checkedId == R.id.radioLaptop) {
+                productImage.setImageResource(R.drawable.img);
+            }
+            else if (checkedId == R.id.radioIphone) {
+                productImage.setImageResource(R.drawable.img_2);
+            }
+        });
+    }
