@@ -1,0 +1,121 @@
+activitymain.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"  
+android:layout_height="match_parent"
+android:orientation="vertical" 
+android:padding="16dp">
+
+<TextView android:layout_width="wrap_content" 
+android:layout_height="wrap_content"
+android:text="Payroll Application" 
+android:textSize="22sp" 
+android:textStyle="bold" 
+android:layout_gravity="center"/>
+
+<EditText 
+android:id="@+id/etname"
+android:layout_width="match_parent" 
+android:layout_height="wrap_content"
+android:hint="Enter Your Name" 
+android:inputType="text"/>
+
+<EditText 
+android:id="@+id/etBasic"
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:hint="Enter Basic Salary"
+android:inputType="number"/>
+
+<Button
+android:id="@+id/btnCalculate" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content"
+android:text="Calculate Salary"/>
+
+<TextView 
+android:id="@+id/tvHra"
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content"
+android:text="HRA:"/>
+ 
+<TextView
+android:id="@+id/tvDa"
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content"
+android:text="DA:"/>
+
+<TextView 
+android:id="@+id/tvPf"
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content"
+android:text="PF:"/>
+
+<TextView android:id="@+id/tvGross" 
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Gross Salary:"/>
+
+<TextView android:id="@+id/tvNet"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Net Salary:" 
+android:textStyle="bold" 
+android:textSize="18sp"/>
+
+</LinearLayout>
+
+
+Mainactivity.java
+package com.example.labprogram4a; 
+import android.os.Bundle;
+import android.view.View; 
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
+public class MainActivity extends AppCompatActivity {
+
+
+EditText etname,etBasic; Button btnCalculate;
+TextView tvHra, tvDa, tvPf, tvGross, tvNet;
+ 
+@Override
+protected void onCreate(Bundle savedInstanceState) { 
+super.onCreate(savedInstanceState); 
+setContentView(R.layout.activity_main);
+
+
+etname = findViewById(R.id.etname);
+etBasic = findViewById(R.id.etBasic);
+btnCalculate = findViewById(R.id.btnCalculate);
+
+tvHra = findViewById(R.id.tvHra); 
+tvDa = findViewById(R.id.tvDa); 
+tvPf = findViewById(R.id.tvPf);
+tvGross = findViewById(R.id.tvGross);
+tvNet = findViewById(R.id.tvNet);
+
+btnCalculate.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+
+double basic = Double.parseDouble(etBasic.getText().toString()); 
+double hra = 0.1 * basic;
+double da = 0.12 * basic; 
+double pf = 0.15 * basic;
+
+double gross = basic + hra + da; 
+double net = gross - pf;
+
+
+}
+});
+}
+}
+ 
