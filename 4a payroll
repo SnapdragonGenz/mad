@@ -113,6 +113,12 @@ double pf = 0.15 * basic;
 double gross = basic + hra + da; 
 double net = gross - pf;
 
+tvHra.setText("HRA: ₹ " + hra); 
+tvDa.setText("DA: ₹ " + da); 
+tvPf.setText("PF: ₹ " + pf);
+tvGross.setText("Gross Salary: ₹ " + gross);
+tvNet.setText("Net Salary: ₹ " + net)
+
 
 }
 });
